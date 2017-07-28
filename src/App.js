@@ -22,4 +22,8 @@ App.propTypes = {
   nr: PropTypes.number.isRequired
 }
 
+App.defaultProps = {
+  txt: "this is the default 'txt' if no prop of 'txt' is added by parent"
+}
+
 export default App
