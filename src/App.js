@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor(){
     super(); // super() will give the keyword 'this' the context within our component rather then its parent class React.Component
     this.state = {
-      someText: 'This is the state "someText"'
+      someText: 'This is the initial state "someText"'
     }
   }
 
@@ -14,21 +14,18 @@ class App extends React.Component {
   }
 
   render(){
-    let txt = this.props.txt;
-    let nr = this.props.nr;
     return (
       <div>
-        <h1>This is a component</h1>
-        <p>when adding an extra tag it needs to be wrapped into
-        one, because only one can be returned.</p>
-        <p>some text from props: {txt}</p>
-        <p>a number from props: {nr}</p>
         <h3>{this.state.someText}</h3>
-        <input type="text" onChange={this.update.bind(this)}/>
+        <Widget update={this.update.bind(this)}/>
+        <Widget update={this.update.bind(this)}/>
       </div>
     )
   }
 }
+
+const Widget = (props) => // new child component that takes in props given by parent and updates the state of its parent
+  <input type="text" onChange={props.update}/> // it calls the update prop when onChange
 
 App.propTypes = {
   txt: PropTypes.string,
