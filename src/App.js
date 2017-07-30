@@ -9,6 +9,10 @@ class App extends React.Component {
     }
   }
 
+  update ( e ){
+    this.setState( {someText: e.target.value} )
+  }
+
   render(){
     let txt = this.props.txt;
     let nr = this.props.nr;
@@ -20,6 +24,7 @@ class App extends React.Component {
         <p>some text from props: {txt}</p>
         <p>a number from props: {nr}</p>
         <h3>{this.state.someText}</h3>
+        <input type="text" onChange={this.update.bind(this)}/>
       </div>
     )
   }
