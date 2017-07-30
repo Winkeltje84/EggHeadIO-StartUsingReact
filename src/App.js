@@ -28,7 +28,17 @@ const Widget = (props) => // new child component that takes in props given by pa
   <input type="text" onChange={props.update}/> // it calls the update prop when onChange
 
 App.propTypes = {
-  txt: PropTypes.string,
+  // custom propTypes error handling:
+  // 3 arguments: props= all props component has received / propName = name for this particular prop / component
+  txt(props, propName, component){
+    if(!(propName in props)){
+      return new Error(`Missing ${propName}`)
+    }
+    if(props[propName].length > 10){
+      console.log('this should return error')
+      return new Error(`prop ${propName} was longer than 10 characters!`)
+    }
+  },
   nr: PropTypes.number.isRequired
 }
 
