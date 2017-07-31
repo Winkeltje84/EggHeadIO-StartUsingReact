@@ -2,7 +2,7 @@ import React from 'react';
 
 class App extends React.Component {
   constructor(){
-    super(); 
+    super();
     this.state = {
       items : []
     }
@@ -21,10 +21,14 @@ class App extends React.Component {
     let items = this.state.items
     return (
       <div>
-        {items.map(item => <h4>{item.name}</h4>)}
+        {items.map(item =>
+          <Starship key={item.name} starship={item} />
+        )}
       </div>
     )
   }
 }
+
+const Starship = (props) => <h4>{props.starship.name}</h4>
 
 export default App
